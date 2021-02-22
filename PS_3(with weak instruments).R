@@ -29,14 +29,13 @@ for (i in 1:length (n)) {
     # OLS estimation
     betaOLS [j, i] <- lm(y~x )$coefficients[2]
     
-    # IV estimation
+    # IV estim a ti o n
     betaIV [j, i] <-ivreg (y~ x|z)$coefficients[2]
   }
 }
 
 graphics.off()
-par("mar")
-par(mar=c(2,2,2,2))
+par(mar=c(3,1,1,3), mfrow=c(2,2))
 
 OLShist<-hist (betaOLS [1:1000, 1], breaks ="Scott", prob = T, xlim = c(mean(betaOLS [1:1000, 1])-1.5, 
                                                                             mean(betaOLS [1:1000,1])+0.5), 
@@ -57,7 +56,7 @@ lines (density (betaIV [1:1000,2]))
 lines (density (betaOLS [1:1000, 2]))
 legend ("topleft", c("OLS","IV"), fill=c(rgb (0.8, 0.8, 0.8, 0.5), rgb(0.1, 0.1, 0.1, 0.5)), cex=0.5)
 box ( )
-
+mtext (paste0 ("N=", n[2]), side=1, line=2)
 
 
 OLShist<-hist (betaOLS [1:1000, 3], breaks ="Scott", prob = T, xlim = c(mean(betaOLS [1:1000, 3])-1.5, 
@@ -68,6 +67,7 @@ lines (density (betaIV [1:1000,3]))
 lines (density (betaOLS [1:1000, 3]))
 legend ("topleft", c("OLS","IV"), fill=c(rgb (0.8, 0.8, 0.8, 0.5), rgb(0.1, 0.1, 0.1, 0.5)), cex=0.5)
 box ( )
+mtext (paste0 ("N=", n[3]), side=1, line=2)
 
 OLShist<-hist (betaOLS [1:1000, 4], breaks ="Scott", prob = T, xlim = c(mean(betaOLS [1:1000, 4])-1.5, 
                                                                             mean(betaOLS [1:1000,4])+0.5), 
@@ -77,7 +77,7 @@ lines (density (betaIV [1:1000,4]))
 lines (density (betaOLS [1:1000, 4]))
 legend ("topleft", c("OLS","IV"), fill=c(rgb (0.8, 0.8, 0.8, 0.5), rgb(0.1, 0.1, 0.1, 0.5)), cex=0.5)
 box ( )
-
+mtext (paste0 ("N=", n[4]), side=1, line=2)
 
 #weak instruments
 
@@ -92,14 +92,16 @@ for (i in 1:length (n)) {
     
     y <- alpha + beta*x + epsilon
     
-    # OLS estimation
+    # OLS e s tim a ti o n
     betaOLS [j, i] <- lm(y~x )$coefficients[2]
     
-    # IV estimation
+    # IV e s tim a ti o n
     betaIV [j, i] <-ivreg (y~ x|z)$coefficients[2]
   }
 }
 
+
+par(mar=c(3,1,1,3), mfrow=c(2,2))
 
 OLShist<-hist (betaOLS [1:1000, 1], breaks ="Scott", prob = T, xlim = c(mean(betaOLS [1:1000, 1])-1.5, 
                                                                         mean(betaOLS [1:1000,1])+0.5), 
@@ -120,7 +122,7 @@ lines (density (betaIV [1:1000,2]))
 lines (density (betaOLS [1:1000, 2]))
 legend ("topleft", c("OLS","IV"), fill=c(rgb (0.8, 0.8, 0.8, 0.5), rgb(0.1, 0.1, 0.1, 0.5)), cex=0.5)
 box ( )
-
+mtext (paste0 ("N=", n[2]), side=1, line=2)
 
 
 OLShist<-hist (betaOLS [1:1000, 3], breaks ="Scott", prob = T, xlim = c(mean(betaOLS [1:1000, 3])-1.5, 
@@ -131,6 +133,7 @@ lines (density (betaIV [1:1000,3]))
 lines (density (betaOLS [1:1000, 3]))
 legend ("topleft", c("OLS","IV"), fill=c(rgb (0.8, 0.8, 0.8, 0.5), rgb(0.1, 0.1, 0.1, 0.5)), cex=0.5)
 box ( )
+mtext (paste0 ("N=", n[3]), side=1, line=2)
 
 OLShist<-hist (betaOLS [1:1000, 4], breaks ="Scott", prob = T, xlim = c(mean(betaOLS [1:1000, 4])-1.5, 
                                                                         mean(betaOLS [1:1000,4])+0.5), 
@@ -140,3 +143,5 @@ lines (density (betaIV [1:1000,4]))
 lines (density (betaOLS [1:1000, 4]))
 legend ("topleft", c("OLS","IV"), fill=c(rgb (0.8, 0.8, 0.8, 0.5), rgb(0.1, 0.1, 0.1, 0.5)), cex=0.5)
 box ( )
+mtext (paste0 ("N=", n[4]), side=1, line=2)
+
