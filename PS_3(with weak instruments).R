@@ -26,10 +26,10 @@ for (i in 1:length (n)) {
     
     y <- alpha + beta*x + epsilon
     
-    # OLS e s tim a ti o n
+    # OLS estimation
     betaOLS [j, i] <- lm(y~x )$coefficients[2]
     
-    # IV e s tim a ti o n
+    # IV estimation
     betaIV [j, i] <-ivreg (y~ x|z)$coefficients[2]
   }
 }
@@ -92,10 +92,10 @@ for (i in 1:length (n)) {
     
     y <- alpha + beta*x + epsilon
     
-    # OLS e s tim a ti o n
+    # OLS estimation
     betaOLS [j, i] <- lm(y~x )$coefficients[2]
     
-    # IV e s tim a ti o n
+    # IV estimation
     betaIV [j, i] <-ivreg (y~ x|z)$coefficients[2]
   }
 }
